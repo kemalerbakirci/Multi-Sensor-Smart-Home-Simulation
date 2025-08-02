@@ -8,6 +8,7 @@ The CLI dashboard provides options to run sensors, view data, export records, an
 ---
 
 ## 📂 Directory Structure
+```bash
 Multi-Sensor-Smart-Home-Simulation/
 ├── app/
 │   ├── mqtt_client.py        # Creates persistent MQTT clients
@@ -23,7 +24,7 @@ Multi-Sensor-Smart-Home-Simulation/
 ├── run.py
 ├── README.md
 └── .gitignore
-
+```
 ---
 
 ## 🚀 Features
