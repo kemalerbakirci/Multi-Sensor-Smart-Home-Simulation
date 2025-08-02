@@ -1,4 +1,3 @@
-# app/cli.py (Updated)
 import threading
 import sqlite3
 import os
