@@ -1,14 +1,33 @@
+# Python cache files
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
+
+# Virtual environment
 venv/
-.venv/
 ENV/
 env/
-*.db
-*.sqlite
-*.log
+.venv/
+
+# Environment files
+*.env
+
+# macOS system files
 .DS_Store
+
+# VS Code settings
 .vscode/
+
+# PyCharm settings
 .idea/
+
+# Logs and exports
+*.log
+exports/
+
+# Ignore all files in data but keep the folders
+data/logs/*
+data/database/*
+!data/logs/.gitkeep
+!data/database/.gitkeep

@@ -3,6 +3,7 @@ import logging
 from dotenv import load_dotenv
 import paho.mqtt.client as mqtt
 
+
 #Load environment variables from config/settings.env
 load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '..', 'config', 'settings.env'))
 BROKER_URL = os.getenv("BROKER_URL", "localhost")
@@ -11,6 +12,7 @@ BROKER_PORT = int(os.getenv("BROKER_PORT", 1883))
 #Setup structured logging for better debugging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger(__name__)
+
 
 def create_client(client_id: str, clean_session: bool = False) -> mqtt.Client:
     """
@@ -37,6 +39,7 @@ def create_client(client_id: str, clean_session: bool = False) -> mqtt.Client:
 
     return client
 
+
 def on_connect(client, userdata, flags, rc):
     """
     Callback executed when the client connects to the broker.
@@ -46,6 +49,7 @@ def on_connect(client, userdata, flags, rc):
         logger.info(f"[MQTT] Connected successfully with client_id={client._client_id.decode()}")
     else:
         logger.error(f"[MQTT] Connection failed (rc={rc})")
+
 
 def on_disconnect(client, userdata, rc):
     """
