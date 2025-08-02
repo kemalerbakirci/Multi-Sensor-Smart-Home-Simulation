@@ -3,12 +3,12 @@ import logging
 from dotenv import load_dotenv
 import paho.mqtt.client as mqtt
 
-# ✅ Load environment variables from config/settings.env
+#Load environment variables from config/settings.env
 load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '..', 'config', 'settings.env'))
 BROKER_URL = os.getenv("BROKER_URL", "localhost")
 BROKER_PORT = int(os.getenv("BROKER_PORT", 1883))
 
-# ✅ Setup structured logging for better debugging
+#Setup structured logging for better debugging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger(__name__)
 
@@ -24,15 +24,15 @@ def create_client(client_id: str, clean_session: bool = False) -> mqtt.Client:
         mqtt.Client: Configured MQTT client ready to connect.
     """
 
-    # ✅ Create MQTT client with persistent session (clean_session=False)
-    # clean_session=False → broker remembers subscriptions & queued messages
+    #Create MQTT client with persistent session (clean_session=False)
+    #clean_session=False → broker remembers subscriptions & queued messages
     client = mqtt.Client(client_id=client_id, clean_session=clean_session, protocol=mqtt.MQTTv311)
 
-    # ✅ Attach event callbacks
+    #Attach event callbacks
     client.on_connect = on_connect
     client.on_disconnect = on_disconnect
 
-    # ✅ Connect to broker
+    #Connect to broker
     client.connect(BROKER_URL, BROKER_PORT)
 
     return client
